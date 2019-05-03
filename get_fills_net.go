@@ -108,9 +108,9 @@ func main() {
 
 			// get information for next gap
 			refLen, err = strconv.Atoi(words[2])
-			if refLen <= 9 {
-				continue
-			}
+			//if refLen <= 9 {
+			//	continue
+			//}
 			newGap.RefStart, err = strconv.Atoi(words[1])
 			newGap.RefStart = newGap.RefStart + 1
 			newGap.RefEnd = newGap.RefStart + refLen - 1
@@ -161,7 +161,7 @@ func main() {
 				}
 			}
 
-			if len(fillEndStack) > 0 && newGap.RefStart < fillEndStack[len(fillEndStack)-1].ref {
+			if len(fillEndStack) > 0 && newGap.RefStart <= fillEndStack[len(fillEndStack)-1].ref {
 
 				fillPrint.RefStart = fillStartStack[len(fillStartStack)-1].ref
 				fillPrint.RefEnd = newGap.RefStart - 1 //to get it in position
@@ -202,7 +202,7 @@ func main() {
 			newFill.id, err = strconv.Atoi(words[8])
 
 			if newFill.Strand == "-" {
-				newFill.QueStart, newFill.QueEnd = newFill.QueEnd, newFill.QueStart-1
+				newFill.QueStart, newFill.QueEnd = newFill.QueEnd-1, newFill.QueStart+1
 			}
 
 			newFill.QueStart = newFill.QueStart + 1
