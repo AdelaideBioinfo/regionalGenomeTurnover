@@ -1,7 +1,7 @@
 // extract fills from net files, min ref size is 10
 // Reuben
 // need to see what is happening with the stacking
-package main
+package fills
 
 import (
 	"bufio"
